@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Player/ViewController.m"
-            timestampString = "517264102.672978"
+            timestampString = "517266832.344102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "-onPlay:"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Player/ViewController.m"
-            timestampString = "517264142.303194"
+            timestampString = "517266832.344102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-onPlay:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Player/ViewController.m"
-            timestampString = "517264143.065899"
+            timestampString = "517266832.344102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "-onPlay:"
             landmarkType = "7">
          </BreakpointContent>

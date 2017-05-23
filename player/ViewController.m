@@ -11,7 +11,6 @@
 
 @interface ViewController ()
 
-@property (weak, nonatomic) IBOutlet UISwitch *loopSwitch;
 
 @property (strong, nonatomic) Player *player;
 @property (nonatomic) BOOL isPlaying;
@@ -48,23 +47,23 @@
 
 #pragma mark - IBActions
 - (IBAction)onStartFromSlider:(UISlider *)sender {
-    self.startFromLabel.text = [NSString stringWithFormat:@"%f", sender.value];
+    self.startFromLabel.text = [NSString stringWithFormat:@"%.01f", sender.value];
 }
 
 - (IBAction)onFinishAtSlider:(UISlider *)sender {
-    self.finishAtlLabel.text = [NSString stringWithFormat:@"%f", sender.value];
+    self.finishAtlLabel.text = [NSString stringWithFormat:@"%.1f", sender.value];
 }
 
 - (IBAction)onDelaySlider:(UISlider *)sender {
-    self.delayLabel.text = [NSString stringWithFormat:@"%f", sender.value];
+    self.delayLabel.text = [NSString stringWithFormat:@"%.1f", sender.value];
 }
 
 - (IBAction)onPitchSlider:(UISlider *)sender {
-     self.pitchLabel.text = [NSString stringWithFormat:@"%f", sender.value];
+     self.pitchLabel.text = [NSString stringWithFormat:@"%.0f", sender.value];
 }
 
 - (IBAction)onTempoSlider:(UISlider *)sender {
-     self.tempoLebel.text = [NSString stringWithFormat:@"%f", sender.value];
+     self.tempoLebel.text = [NSString stringWithFormat:@"%.1f", sender.value];
 }
 
 
@@ -76,12 +75,11 @@
         self.player.path = [NSURL fileURLWithPath:path];
         
         self.player.tempo = self.tempoSlider.value / 100.0;
-        self.player.startFromTime = self.tempoSlider.value;
-        self.player.delayTime = self.delaySlider.value;
+        self.player.startFromTime = self.startFromSlider.value * 1000.0;
+        self.player.delayTime = self.delaySlider.value * 1000.0;
         self.player.pitch = self.pitchSlider.value;
-        self.player.finishAtTime = self.finishAtSlider.value;
+        self.player.finishAtTime = self.finishAtSlider.value * 1000.0;
         self.player.isLoop = self.loopSwitch.on;
-        
         
         [self.player prepareInputFile];
         [self.player play];
