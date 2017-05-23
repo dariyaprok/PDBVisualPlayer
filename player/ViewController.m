@@ -8,12 +8,14 @@
 
 #import "ViewController.h"
 #import "Player.h"
+#import "BAWaveFormViewMaker.h"
 
 @interface ViewController ()
 
 
 @property (strong, nonatomic) Player *player;
 @property (nonatomic) BOOL isPlaying;
+@property (nonatomic, strong) NSString *path;
 
 @property (weak, nonatomic) IBOutlet UILabel *startFromLabel;
 @property (weak, nonatomic) IBOutlet UISlider *startFromSlider;
@@ -26,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *tempoLebel;
 @property (weak, nonatomic) IBOutlet UISlider *tempoSlider;
 @property (weak, nonatomic) IBOutlet UISwitch *loopSwitch;
+@property (weak, nonatomic) IBOutlet UIImageView *waveFormImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *waveFormImageWidthConstraint;
 
 @end
 
@@ -34,12 +38,14 @@
 #pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"DemoSong" ofType:@"m4a"];
+    self.path = [[NSBundle mainBundle] pathForResource:@"DemoSong" ofType:@"m4a"];
     self.player = [[Player alloc] init];
-    self.player.path = [NSURL fileURLWithPath:path];
+    self.player.path = [NSURL fileURLWithPath:_path];
     //player details
 //    NSString *path = [[NSBundle mainBundle] pathForResource:@"DemoSong" ofType:@"m4a"];
     self.isPlaying = false;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveWaveFormImage:) name:@"BAWaveFormImageNotification" object:nil];
+    [self startImplementImag];
     
     //setupGestures
 }
@@ -88,6 +94,22 @@
         [self.player stop];
     }
     _isPlaying = !_isPlaying;
+}
+
+- (void) startImplementImag {
+    [[BAWaveFormViewMaker sharedWaveFormMaker] makeWaveformImageForPath:self.path];
+}
+
+- (void)recieveWaveFormImage:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImage *waveFormImage = (UIImage *)notification.userInfo[@"waveFormImage"];
+        NSData *imageData = UIImagePNGRepresentation(waveFormImage);
+        NSString *path = notification.userInfo[@"path"];
+        [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:path];
+        self.waveFormImageWidthConstraint.constant = waveFormImage.size.width;
+        [self.view layoutSubviews];
+        self.waveFormImageView.image = waveFormImage;
+    });
 }
 
 

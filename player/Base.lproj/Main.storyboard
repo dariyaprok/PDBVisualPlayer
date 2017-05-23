@@ -157,6 +157,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iuj-sy-jcN">
+                                <rect key="frame" x="0.0" y="355" width="375" height="60"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NfK-a2-sgd">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="375" id="XDv-5P-vjb"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" secondItem="NfK-a2-sgd" secondAttribute="height" id="BKN-lk-XRy"/>
+                                    <constraint firstItem="NfK-a2-sgd" firstAttribute="centerY" secondItem="Iuj-sy-jcN" secondAttribute="centerY" id="F79-wN-NgD"/>
+                                    <constraint firstItem="NfK-a2-sgd" firstAttribute="leading" secondItem="Iuj-sy-jcN" secondAttribute="leading" id="MdN-rk-KQO"/>
+                                    <constraint firstAttribute="bottom" secondItem="NfK-a2-sgd" secondAttribute="bottom" id="NY8-uU-zXk"/>
+                                    <constraint firstAttribute="trailing" secondItem="NfK-a2-sgd" secondAttribute="trailing" id="Ojd-rM-gfv"/>
+                                    <constraint firstAttribute="height" constant="60" id="VGC-g8-L8C"/>
+                                </constraints>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8x-Mg-uJX">
                                 <rect key="frame" x="275" y="567" width="100" height="100"/>
                                 <constraints>
@@ -196,6 +215,7 @@
                             <constraint firstItem="tq8-07-KDp" firstAttribute="leading" secondItem="E1O-A6-Nw6" secondAttribute="leading" id="Key-6s-cqR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Z8X-RV-6FB" secondAttribute="trailing" id="L2o-AG-ioW"/>
                             <constraint firstItem="ELH-yg-Anp" firstAttribute="leading" secondItem="hlU-zT-Res" secondAttribute="trailing" constant="5" id="O6E-oy-RTb"/>
+                            <constraint firstItem="Iuj-sy-jcN" firstAttribute="top" secondItem="tq8-07-KDp" secondAttribute="bottom" constant="60" id="R87-Ne-Edt"/>
                             <constraint firstItem="sGL-Ul-Y1s" firstAttribute="centerX" secondItem="ELH-yg-Anp" secondAttribute="centerX" id="SOD-O4-dDo"/>
                             <constraint firstItem="Ixj-bY-UZL" firstAttribute="top" secondItem="VgX-gm-a8f" secondAttribute="bottom" constant="20" id="SRg-sS-GZV"/>
                             <constraint firstItem="E1O-A6-Nw6" firstAttribute="top" secondItem="jS3-FG-3XZ" secondAttribute="bottom" constant="20" id="TFF-Th-aVG"/>
@@ -203,7 +223,9 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Y8x-Mg-uJX" secondAttribute="bottom" id="Ubi-Vu-NgO"/>
                             <constraint firstItem="sGL-Ul-Y1s" firstAttribute="centerY" secondItem="tq8-07-KDp" secondAttribute="centerY" id="VIG-sm-64K"/>
                             <constraint firstItem="lTx-AO-ZYx" firstAttribute="baseline" secondItem="VgX-gm-a8f" secondAttribute="baseline" id="WRR-XV-MTd"/>
+                            <constraint firstItem="Iuj-sy-jcN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="XU2-rM-2tN"/>
                             <constraint firstItem="fEP-h9-pvm" firstAttribute="baseline" secondItem="jS3-FG-3XZ" secondAttribute="baseline" id="ZWj-1s-psg"/>
+                            <constraint firstItem="Iuj-sy-jcN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZdM-eM-Rdq"/>
                             <constraint firstItem="x6k-yF-TTk" firstAttribute="centerY" secondItem="VgX-gm-a8f" secondAttribute="centerY" id="bQU-xi-hit"/>
                             <constraint firstItem="4Q7-ig-nfp" firstAttribute="leading" secondItem="H3E-m6-9EG" secondAttribute="trailing" constant="5" id="cln-OO-bOf"/>
                             <constraint firstAttribute="trailing" secondItem="Y8x-Mg-uJX" secondAttribute="trailing" id="dF5-43-aOI"/>
@@ -234,6 +256,8 @@
                         <outlet property="startFromSlider" destination="Z8X-RV-6FB" id="xkt-uW-MuX"/>
                         <outlet property="tempoLebel" destination="hlU-zT-Res" id="DSK-vc-NMb"/>
                         <outlet property="tempoSlider" destination="ELH-yg-Anp" id="hWe-2y-rx9"/>
+                        <outlet property="waveFormImageView" destination="NfK-a2-sgd" id="VES-Ry-84W"/>
+                        <outlet property="waveFormImageWidthConstraint" destination="XDv-5P-vjb" id="MSu-Ho-Wei"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

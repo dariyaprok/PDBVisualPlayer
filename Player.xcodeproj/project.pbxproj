@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84C947081ED4E1AF002701EC /* BAWaveFormViewMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C947071ED4E1AF002701EC /* BAWaveFormViewMaker.m */; };
 		C8EE77C01EAA36F000EA349A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE77BF1EAA36F000EA349A /* main.m */; };
 		C8EE77C31EAA36F000EA349A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE77C21EAA36F000EA349A /* AppDelegate.m */; };
 		C8EE77C61EAA36F000EA349A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE77C51EAA36F000EA349A /* ViewController.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84C947061ED4E1AF002701EC /* BAWaveFormViewMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BAWaveFormViewMaker.h; path = player/BAWaveFormViewMaker.h; sourceTree = SOURCE_ROOT; };
+		84C947071ED4E1AF002701EC /* BAWaveFormViewMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BAWaveFormViewMaker.m; path = player/BAWaveFormViewMaker.m; sourceTree = SOURCE_ROOT; };
 		C8EE77BB1EAA36F000EA349A /* Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Player.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8EE77BF1EAA36F000EA349A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C8EE77C11EAA36F000EA349A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 				C8EE77C21EAA36F000EA349A /* AppDelegate.m */,
 				C8EE77C41EAA36F000EA349A /* ViewController.h */,
 				C8EE77C51EAA36F000EA349A /* ViewController.m */,
+				84C947061ED4E1AF002701EC /* BAWaveFormViewMaker.h */,
+				84C947071ED4E1AF002701EC /* BAWaveFormViewMaker.m */,
 				C8EE77C71EAA36F000EA349A /* Main.storyboard */,
 				C8EE77CA1EAA36F000EA349A /* Assets.xcassets */,
 				C8EE77CC1EAA36F000EA349A /* LaunchScreen.storyboard */,
@@ -231,6 +236,7 @@
 				C8EE77EF1EAE5EFC00EA349A /* PitchHelper.mm in Sources */,
 				C8EE77C31EAA36F000EA349A /* AppDelegate.m in Sources */,
 				C8EE77C01EAA36F000EA349A /* main.m in Sources */,
+				84C947081ED4E1AF002701EC /* BAWaveFormViewMaker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
