@@ -9,6 +9,7 @@
 #import "BAWaveFormViewMaker.h"
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "PitchHelper.h"
 
 #define absX(x) (x<0?0-x:x)
 #define minMaxX(x,mn,mx) (x<=mn?mn:(x>=mx?mx:x))
@@ -30,8 +31,11 @@
 @implementation BAWaveFormViewMaker
 
 #pragma mark - public
-- (void)makeWaveformImageForPath:(NSString *)path {
-    [self.pathsQueue addObject:path];
+- (void)makeWaveformImageForPath:(NSString *)path pitch:(float)pitch tempo:(float)tempo {
+    NSDictionary *dataDictionary = @{@"path": path,
+                                     @"pitch": @(pitch),
+                                     @"tempo": @(tempo)};
+    [self.pathsQueue addObject:dataDictionary];
     if (self.pathsQueue.count == 1) {
         [self startImplementWaveformImage];
     }
@@ -40,7 +44,8 @@
 
 - (void) startImplementWaveformImage {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *path = [self.pathsQueue firstObject];
+        NSDictionary *dataDictionary = [self.pathsQueue firstObject];
+        NSString *path = dataDictionary[@"path"];
         NSURL * fileURL;
         if (![path containsString:@"//"]) {
             fileURL = [NSURL fileURLWithPath:path];
@@ -49,14 +54,14 @@
             fileURL = [NSURL URLWithString:path];
         }
         AVURLAsset * urlA = [AVURLAsset URLAssetWithURL:fileURL options:nil];
-        UIImage *waveformImage = [UIImage imageWithData:[self renderPNGAudioPictogramLogForAssett:urlA]];
+        UIImage *waveformImage = [UIImage imageWithData:[self renderPNGAudioPictogramLogForAssett:urlA options:dataDictionary]];
         CGSize newsize = CGSizeMake([self widthForPath:path], 50.0);
         UIGraphicsBeginImageContext(newsize);
         [waveformImage drawInRect:CGRectMake(0, 0, newsize.width, newsize.height)];
         UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         [[NSNotificationCenter defaultCenter] postNotificationName:@"BAWaveFormImageNotification" object:self userInfo:@{@"waveFormImage" : finalImage, @"path" : path}];
-        [self.pathsQueue removeObject:path];
+        [self.pathsQueue removeObject:dataDictionary];
         if (self.pathsQueue.count) {
             [self startImplementWaveformImage];
         }
@@ -140,7 +145,7 @@
 
 
 
-- (NSData *) renderPNGAudioPictogramLogForAssett:(AVURLAsset *)songAsset {
+- (NSData *) renderPNGAudioPictogramLogForAssett:(AVURLAsset *)songAsset options:(NSDictionary *)options {
     
     CGFloat seconds = CMTimeGetSeconds(songAsset.duration);
     CGFloat pixelsForLength = seconds * pixelsScale;
@@ -176,7 +181,7 @@
         if(fmtDesc ) {
             
             sampleRate = fmtDesc->mSampleRate;
-
+            
         }
     }
     
@@ -241,7 +246,7 @@
                     
                 }
             }
-
+            
             
             CMSampleBufferInvalidate(sampleBufferRef);
             
@@ -257,13 +262,39 @@
         
         NSLog(@"lenfgth of vie = %f, length of pixels = %f", length, pixelsForLength);
         
-        UIImage *test = [self audioImageLogGraph:(Float32 *) fullSongData.bytes
-                                    normalizeMax:normalizeMax
-                                     sampleCount:fullSongData.length / sizeof(Float32)
-                                      imageWidth:length
-                                     imageHeight:50];
+        UIImage *test;
+        if ([options[@"tempo"] floatValue] == 1.0 && [options[@"pitch"] floatValue] == 0) {
+            test = [self audioImageLogGraph:(Float32 *) fullSongData.bytes
+                               normalizeMax:normalizeMax
+                                sampleCount:fullSongData.length / sizeof(Float32)
+                                 imageWidth:length
+                                imageHeight:50];
+        }
+        else {
+            soundTouch_type soundTouch = initSoundTouch();
+            setSampleRate(soundTouch, 44100);
+            setChannelCount(soundTouch, 1);
+            setTempo(soundTouch, [options[@"tempo"] floatValue]);
+            setPitch(soundTouch, [options[@"pitch"] floatValue]);
+            putSamples(soundTouch, (Float32 *)fullSongData.bytes, (int) fullSongData.length / sizeof(Float32));
+            float data[fullSongData.length / sizeof(Float32)];
+            float *pointer = data;
+            int numberOfSamples = 0;
+            
+            do {
+                numberOfSamples = recieveSamples(soundTouch, pointer, (int) fullSongData.length / sizeof(Float32));
+            }
+            while (numberOfSamples > 0);
+            test = [self audioImageLogGraph:pointer
+                               normalizeMax:normalizeMax
+                                sampleCount:fullSongData.length / sizeof(Float32)
+                                 imageWidth:length
+                                imageHeight:50];
+        }
         
+        //free(pointer);
         finalData = imageToData(test);
+        
     }
     
     return finalData;

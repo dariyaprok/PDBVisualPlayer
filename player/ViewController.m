@@ -87,6 +87,7 @@
         self.player.finishAtTime = self.finishAtSlider.value * 1000.0;
         self.player.isLoop = self.loopSwitch.on;
         
+        [self startImplementImag];
         [self.player prepareInputFile];
         [self.player play];
     }
@@ -97,7 +98,7 @@
 }
 
 - (void) startImplementImag {
-    [[BAWaveFormViewMaker sharedWaveFormMaker] makeWaveformImageForPath:self.path];
+    [[BAWaveFormViewMaker sharedWaveFormMaker] makeWaveformImageForPath:self.path pitch:self.player.pitch tempo:self.player.tempo];
 }
 
 - (void)recieveWaveFormImage:(NSNotification *)notification {

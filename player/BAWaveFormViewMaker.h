@@ -11,7 +11,7 @@
 @interface BAWaveFormViewMaker : NSObject
 
 + (instancetype) sharedWaveFormMaker;
-- (void) makeWaveformImageForPath: (NSString *)path;
+- (void) makeWaveformImageForPath: (NSString *)path pitch:(float)pitch tempo:(float)tempo;
 - (float) widthForPath: (NSString *)path;
 
 @end
