@@ -280,14 +280,15 @@
             float data[fullSongData.length / sizeof(Float32)];
             float *pointer = data;
             int numberOfSamples = 0;
-            
+            int sampleSum = 0;
             do {
                 numberOfSamples = recieveSamples(soundTouch, pointer, (int) fullSongData.length / sizeof(Float32));
+                sampleSum += numberOfSamples;
             }
             while (numberOfSamples > 0);
             test = [self audioImageLogGraph:pointer
                                normalizeMax:normalizeMax
-                                sampleCount:fullSongData.length / sizeof(Float32)
+                                sampleCount:sampleSum
                                  imageWidth:length
                                 imageHeight:50];
         }

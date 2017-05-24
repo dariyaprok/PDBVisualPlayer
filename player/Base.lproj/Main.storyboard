@@ -244,6 +244,13 @@
                                     <action selector="onPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GmJ-wd-9hk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hN-Lf-2L2">
+                                <rect key="frame" x="528" y="223" width="40" height="30"/>
+                                <state key="normal" title="Detail"/>
+                                <connections>
+                                    <action selector="onDetails:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zqK-oY-dy2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -279,6 +286,7 @@
                             <constraint firstItem="Ixj-bY-UZL" firstAttribute="top" secondItem="VgX-gm-a8f" secondAttribute="bottom" constant="10" id="SRg-sS-GZV"/>
                             <constraint firstItem="E1O-A6-Nw6" firstAttribute="top" secondItem="jS3-FG-3XZ" secondAttribute="bottom" constant="10" id="TFF-Th-aVG"/>
                             <constraint firstItem="qmx-6s-lcy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="Tjp-Vt-GfQ"/>
+                            <constraint firstItem="iX7-1G-3L4" firstAttribute="top" secondItem="2hN-Lf-2L2" secondAttribute="bottom" id="U2B-ht-dy0"/>
                             <constraint firstItem="sGL-Ul-Y1s" firstAttribute="centerY" secondItem="tq8-07-KDp" secondAttribute="centerY" id="VIG-sm-64K"/>
                             <constraint firstItem="lTx-AO-ZYx" firstAttribute="baseline" secondItem="VgX-gm-a8f" secondAttribute="baseline" id="WRR-XV-MTd"/>
                             <constraint firstItem="KPu-Ox-Nhj" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="X1m-BO-rtD"/>
@@ -305,7 +313,9 @@
                             <constraint firstItem="KPu-Ox-Nhj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oQh-IN-vvx"/>
                             <constraint firstAttribute="trailing" secondItem="iX7-1G-3L4" secondAttribute="trailing" id="uAT-iF-cIS"/>
                             <constraint firstItem="Iuj-sy-jcN" firstAttribute="top" secondItem="O1e-Vz-8KF" secondAttribute="bottom" id="wMd-Mb-g1B"/>
+                            <constraint firstItem="2hN-Lf-2L2" firstAttribute="top" secondItem="Iuj-sy-jcN" secondAttribute="bottom" constant="-5" id="wcg-Mx-4x3"/>
                             <constraint firstItem="H3E-m6-9EG" firstAttribute="baseline" secondItem="Ixj-bY-UZL" secondAttribute="baseline" id="z11-LX-0wz"/>
+                            <constraint firstAttribute="trailing" secondItem="2hN-Lf-2L2" secondAttribute="trailing" id="z7E-5e-N1M"/>
                             <constraint firstItem="Z8X-RV-6FB" firstAttribute="leading" secondItem="FwM-dL-27W" secondAttribute="trailing" constant="2" id="zcb-PX-j8i"/>
                         </constraints>
                     </view>
@@ -334,6 +344,100 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.26760563380282" y="138.75"/>
+        </scene>
+        <!--DetailsVC-->
+        <scene sceneID="SyU-sc-wLS">
+            <objects>
+                <viewController storyboardIdentifier="PDBDetailsVCId" id="ezR-df-M6a" customClass="PDBDetailsVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="43P-id-yUe"/>
+                        <viewControllerLayoutGuide type="bottom" id="yWB-Vf-AhH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZGz-n8-NKs">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf7-5j-qhH">
+                                <rect key="frame" x="0.0" y="20" width="568" height="150"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lQ4-v2-T19" customClass="PDBScaleView">
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="500" id="8gG-Mn-Wvv"/>
+                                            <constraint firstAttribute="height" constant="15" id="Lie-y9-Hyw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bfd-gX-jtG">
+                                        <rect key="frame" x="0.0" y="15" width="375" height="135"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="375" id="YC3-25-2rM"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lQ4-v2-T19" firstAttribute="top" secondItem="Qf7-5j-qhH" secondAttribute="top" id="08p-Aq-EL7"/>
+                                    <constraint firstItem="Bfd-gX-jtG" firstAttribute="top" secondItem="lQ4-v2-T19" secondAttribute="bottom" id="7XB-3T-4k7"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bfd-gX-jtG" secondAttribute="bottom" id="OeR-D2-7MW"/>
+                                    <constraint firstItem="lQ4-v2-T19" firstAttribute="leading" secondItem="Qf7-5j-qhH" secondAttribute="leading" id="ZAc-SF-S9X"/>
+                                    <constraint firstItem="Bfd-gX-jtG" firstAttribute="leading" secondItem="Qf7-5j-qhH" secondAttribute="leading" id="kBB-px-kDs"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bfd-gX-jtG" secondAttribute="trailing" id="nsR-X9-TQN"/>
+                                </constraints>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xm-4X-BuS">
+                                <rect key="frame" x="0.0" y="170" width="568" height="150"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EdP-AN-qe5" customClass="PDBScaleView">
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="500" id="7Uc-Vt-au3"/>
+                                            <constraint firstAttribute="height" constant="15" id="Vcq-LA-yMA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LVS-yI-qPw">
+                                        <rect key="frame" x="0.0" y="15" width="375" height="135"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="375" id="c40-tr-h6i"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="LVS-yI-qPw" firstAttribute="leading" secondItem="0Xm-4X-BuS" secondAttribute="leading" id="8S0-Ag-Kb1"/>
+                                    <constraint firstAttribute="trailing" secondItem="LVS-yI-qPw" secondAttribute="trailing" id="MAY-aT-Rcz"/>
+                                    <constraint firstItem="LVS-yI-qPw" firstAttribute="top" secondItem="EdP-AN-qe5" secondAttribute="bottom" id="SyU-Kw-VbL"/>
+                                    <constraint firstAttribute="bottom" secondItem="LVS-yI-qPw" secondAttribute="bottom" id="dMB-zJ-fd5"/>
+                                    <constraint firstItem="EdP-AN-qe5" firstAttribute="top" secondItem="0Xm-4X-BuS" secondAttribute="top" id="dMm-od-eLl"/>
+                                    <constraint firstItem="EdP-AN-qe5" firstAttribute="leading" secondItem="0Xm-4X-BuS" secondAttribute="leading" id="dN1-3v-bcR"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0Xm-4X-BuS" firstAttribute="height" secondItem="Qf7-5j-qhH" secondAttribute="height" id="4Th-Zq-DXV"/>
+                            <constraint firstItem="Qf7-5j-qhH" firstAttribute="leading" secondItem="ZGz-n8-NKs" secondAttribute="leadingMargin" constant="-20" id="dNk-79-zgY"/>
+                            <constraint firstItem="0Xm-4X-BuS" firstAttribute="leading" secondItem="ZGz-n8-NKs" secondAttribute="leadingMargin" constant="-20" id="e5A-4A-dJy"/>
+                            <constraint firstItem="yWB-Vf-AhH" firstAttribute="top" secondItem="0Xm-4X-BuS" secondAttribute="bottom" id="i1G-ib-Srq"/>
+                            <constraint firstItem="0Xm-4X-BuS" firstAttribute="top" secondItem="Bfd-gX-jtG" secondAttribute="bottom" id="lgs-bi-ijt"/>
+                            <constraint firstItem="Qf7-5j-qhH" firstAttribute="top" secondItem="43P-id-yUe" secondAttribute="bottom" id="mJi-rf-mxs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Xm-4X-BuS" secondAttribute="trailing" constant="-20" id="reP-Qu-Qkw"/>
+                            <constraint firstItem="yWB-Vf-AhH" firstAttribute="top" secondItem="LVS-yI-qPw" secondAttribute="bottom" id="toZ-Ta-LFV"/>
+                            <constraint firstItem="0Xm-4X-BuS" firstAttribute="top" secondItem="Qf7-5j-qhH" secondAttribute="bottom" id="uHN-Rk-ZWQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qf7-5j-qhH" secondAttribute="trailing" constant="-20" id="zgI-gW-GGq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="oldIWaveImageView" destination="LVS-yI-qPw" id="CKr-96-hzG"/>
+                        <outlet property="oldScaleViewWidth" destination="7Uc-Vt-au3" id="1UY-Os-3gc"/>
+                        <outlet property="oldWaveBigScaleView" destination="EdP-AN-qe5" id="eT6-vu-EJZ"/>
+                        <outlet property="oldWaveViewWidth" destination="c40-tr-h6i" id="NM5-5Q-921"/>
+                        <outlet property="waveImageView" destination="Bfd-gX-jtG" id="msX-LZ-FCh"/>
+                        <outlet property="waveImageViewWidth" destination="YC3-25-2rM" id="KtX-nO-zgr"/>
+                        <outlet property="waveScaleView" destination="lQ4-v2-T19" id="4dD-4g-tPq"/>
+                        <outlet property="waveScaleViewWidth" destination="8gG-Mn-Wvv" id="2Qp-v9-nep"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDL-xi-8eP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880" y="139"/>
         </scene>
     </scenes>
 </document>

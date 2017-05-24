@@ -10,6 +10,7 @@
 #import "Player.h"
 #import "BAWaveFormViewMaker.h"
 #import "PDBScaleView.h"
+#import "PDBDetailsVC.h"
 
 @interface ViewController ()
 
@@ -102,6 +103,13 @@
         [self.player stop];
     }
     _isPlaying = !_isPlaying;
+}
+
+- (IBAction)onDetails:(id)sender {
+    PDBDetailsVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PDBDetailsVCId"];
+    vc.waveImage = self.waveFormImageView.image;
+    vc.oldWaveImage = self.oldWaveFormImageView.image;
+    [self presentViewController:vc animated:true completion:nil];
 }
 
 - (void) startImplementImag {
