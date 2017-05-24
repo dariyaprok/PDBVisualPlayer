@@ -30,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *loopSwitch;
 @property (weak, nonatomic) IBOutlet UIImageView *waveFormImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *waveFormImageWidthConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *oldWaveFormImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *oldWaveFormImageViewWidthConstraint;
 
 @end
 
@@ -103,6 +105,8 @@
 
 - (void)recieveWaveFormImage:(NSNotification *)notification {
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.oldWaveFormImageViewWidthConstraint.constant = self.waveFormImageWidthConstraint.constant;
+        self.oldWaveFormImageView.image = self.waveFormImageView.image;
         UIImage *waveFormImage = (UIImage *)notification.userInfo[@"waveFormImage"];
         NSData *imageData = UIImagePNGRepresentation(waveFormImage);
         NSString *path = notification.userInfo[@"path"];
