@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Player.h"
 #import "BAWaveFormViewMaker.h"
+#import "PDBScaleView.h"
 
 @interface ViewController ()
 
@@ -32,6 +33,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *waveFormImageWidthConstraint;
 @property (weak, nonatomic) IBOutlet UIImageView *oldWaveFormImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *oldWaveFormImageViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet PDBScaleView *scaleView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scaleViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet PDBScaleView *oldWaveScaleView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *oldWaveScaleViewWidthConstraint;
 
 @end
 
@@ -114,8 +119,17 @@
         self.waveFormImageWidthConstraint.constant = waveFormImage.size.width;
         [self.view layoutSubviews];
         self.waveFormImageView.image = waveFormImage;
+        [self updateScaleView:self.scaleView constraint:_scaleViewWidthConstraint width:_waveFormImageWidthConstraint.constant];
+        [self updateScaleView:self.oldWaveScaleView constraint:_oldWaveScaleViewWidthConstraint width:_oldWaveFormImageViewWidthConstraint.constant];
     });
 }
+
+- (void)updateScaleView: (PDBScaleView *)scaleView constraint:(NSLayoutConstraint *)constraint width:(CGFloat)width {
+    constraint.constant = width > [UIScreen mainScreen].bounds.size.width ? width : [UIScreen mainScreen].bounds.size.width;
+    [self.view layoutIfNeeded];
+    [scaleView reloadData];
+};
+
 
 
 @end

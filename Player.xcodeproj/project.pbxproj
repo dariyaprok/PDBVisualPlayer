@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84C947081ED4E1AF002701EC /* BAWaveFormViewMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C947071ED4E1AF002701EC /* BAWaveFormViewMaker.m */; };
+		84C947141ED63FB3002701EC /* PDBScaleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C947131ED63FB3002701EC /* PDBScaleView.m */; };
 		C8EE77C01EAA36F000EA349A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE77BF1EAA36F000EA349A /* main.m */; };
 		C8EE77C31EAA36F000EA349A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE77C21EAA36F000EA349A /* AppDelegate.m */; };
 		C8EE77C61EAA36F000EA349A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE77C51EAA36F000EA349A /* ViewController.m */; };
@@ -41,6 +42,8 @@
 /* Begin PBXFileReference section */
 		84C947061ED4E1AF002701EC /* BAWaveFormViewMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BAWaveFormViewMaker.h; path = player/BAWaveFormViewMaker.h; sourceTree = SOURCE_ROOT; };
 		84C947071ED4E1AF002701EC /* BAWaveFormViewMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BAWaveFormViewMaker.m; path = player/BAWaveFormViewMaker.m; sourceTree = SOURCE_ROOT; };
+		84C947121ED63FB2002701EC /* PDBScaleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDBScaleView.h; path = player/PDBScaleView.h; sourceTree = SOURCE_ROOT; };
+		84C947131ED63FB3002701EC /* PDBScaleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDBScaleView.m; path = player/PDBScaleView.m; sourceTree = SOURCE_ROOT; };
 		C8EE77BB1EAA36F000EA349A /* Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Player.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8EE77BF1EAA36F000EA349A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C8EE77C11EAA36F000EA349A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -94,6 +97,8 @@
 		C8EE77BD1EAA36F000EA349A /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				84C947121ED63FB2002701EC /* PDBScaleView.h */,
+				84C947131ED63FB3002701EC /* PDBScaleView.m */,
 				C8EE77DB1EAA385900EA349A /* DemoSong.m4a */,
 				C8EE77C11EAA36F000EA349A /* AppDelegate.h */,
 				C8EE77C21EAA36F000EA349A /* AppDelegate.m */,
@@ -233,6 +238,7 @@
 			files = (
 				C8EE77D71EAA376400EA349A /* Player.m in Sources */,
 				C8EE77C61EAA36F000EA349A /* ViewController.m in Sources */,
+				84C947141ED63FB3002701EC /* PDBScaleView.m in Sources */,
 				C8EE77EF1EAE5EFC00EA349A /* PitchHelper.mm in Sources */,
 				C8EE77C31EAA36F000EA349A /* AppDelegate.m in Sources */,
 				C8EE77C01EAA36F000EA349A /* main.m in Sources */,
